@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WearUp BD | Retail & Wholesale</title>
+  <meta name="description" content="WearUp BD — খুচরা ও পাইকারি পণ্য বিক্রয়।">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a class="logo" href="#">WearUp <span>BD</span></a>
+    <button class="menu" onclick="toggleMenu()">☰</button>
+    <nav id="navLinks">
+      <a href="#home">হোম</a>
+      <a href="#products">পণ্য</a>
+      <a href="#wholesale">পাইকারি</a>
+      <a href="#about">আমাদের সম্পর্কে</a>
+      <a href="#contact">যোগাযোগ</a>
+    </nav>
+    <a class="cart" href="#products">🛒 <span id="cartCount">0</span></a>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="badge">✨ Retail & Wholesale</p>
+      <h1>আপনার পছন্দের পণ্য,<br><span>WearUp BD</span>-তে</h1>
+      <p class="lead">যেকোনো ধরনের খুচরা ও পাইকারি মালামাল সহজে অর্ডার করুন। ভালো পণ্য, সহজ অর্ডার ও নির্ভরযোগ্য সেবা।</p>
+      <div class="actions">
+        <a class="btn primary" href="#products">পণ্য দেখুন</a>
+        <a class="btn secondary" href="#contact">যোগাযোগ করুন</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-icon">🛍️</div>
+      <h3>Retail & Wholesale</h3>
+      <p>ছোট বা বড় অর্ডার—দুই ধরনের ক্রেতার জন্য।</p>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><p class="eyebrow">OUR PRODUCTS</p><h2>জনপ্রিয় পণ্য</h2></div>
+      <input id="search" oninput="filterProducts()" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন">
+    </div>
+    <div id="productGrid" class="products"></div>
+  </div>
+</section>
+
+<section id="wholesale" class="section alt">
+  <div class="container wholesale">
+    <div>
+      <p class="eyebrow">WHOLESALE</p>
+      <h2>পাইকারি অর্ডার করতে চান?</h2>
+      <p>বেশি পরিমাণে পণ্য প্রয়োজন হলে আমাদের সাথে যোগাযোগ করুন। আপনার প্রয়োজন অনুযায়ী মূল্য ও অর্ডার নিয়ে আলোচনা করা যাবে।</p>
+    </div>
+    <a class="btn primary" href="#contact">পাইকারি অর্ডার</a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container">
+    <p class="eyebrow">ABOUT US</p>
+    <h2>WearUp BD সম্পর্কে</h2>
+    <p class="about-text">WearUp BD একটি খুচরা ও পাইকারি ব্যবসায়িক পেজ। আমরা বিভিন্ন ধরনের পণ্য ক্রেতাদের কাছে সহজে পৌঁছে দেওয়ার চেষ্টা করি। আপনার প্রয়োজনের পণ্য ও অর্ডার সংক্রান্ত তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
+    <div class="features">
+      <div>🚚 <b>ডেলিভারি</b><span>অর্ডার অনুযায়ী</span></div>
+      <div>📦 <b>Retail & Wholesale</b><span>দুই ধরনের অর্ডার</span></div>
+      <div>💬 <b>সহজ যোগাযোগ</b><span>Facebook/Phone</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow">CONTACT</p>
+      <h2>অর্ডার বা তথ্যের জন্য যোগাযোগ করুন</h2>
+      <p>নিচের ফর্মে আপনার নাম, ফোন নম্বর ও পণ্যের নাম লিখে পাঠান।</p>
+      <div class="contact-links">
+        <a href="https://www.facebook.com/profile.php?id=100070106595013/" target="_blank">📘 Facebook Page</a>
+        <a href="tel:+8801898729750">📞 +880 1XXXXXXXXX</a>
+      </div>
+    </div>
+    <form onsubmit="submitOrder(event)">
+      <input required placeholder="আপনার নাম">
+      <input required type="tel" placeholder="ফোন নম্বর">
+      <input required placeholder="পণ্যের নাম / অর্ডার">
+      <textarea rows="4" placeholder="অতিরিক্ত তথ্য"></textarea>
+      <button class="btn primary" type="submit">অর্ডার পাঠান</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div><strong>WearUp BD</strong><p>Retail & Wholesale</p></div>
+    <p>© <span id="year"></span> WearUp BD. All rights reserved.</p>
+  </div>
+</footer>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,11 +1,706 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WearUp BD — Online Shop</title><link rel="stylesheet" href="style.css"></head><body>
-<div class="top">🚚 সারা বাংলাদেশে ডেলিভারি • খুচরা ও পাইকারি অর্ডার</div>
-<header><a class="logo" href="#">WearUp <b>BD</b></a><button onclick="menu()">☰</button><nav id="nav"><a href="#home">হোম</a><a href="#products">শপ</a><a href="#categories">ক্যাটাগরি</a><a href="#wholesale">পাইকারি</a><a href="#contact">যোগাযোগ</a></nav><button onclick="cartOpen()">🛒 <span id="count">0</span></button></header>
-<section id="home" class="hero"><div><small>✨ NEW COLLECTION</small><h1>স্টাইল, পছন্দ<br><span>আর ভালো দাম</span></h1><p>WearUp BD-তে খুচরা ও পাইকারি পণ্য অর্ডার করুন। সহজে পণ্য খুঁজুন এবং যোগাযোগ করে অর্ডার নিশ্চিত করুন।</p><a class="btn" href="#products">এখনই শপ করুন →</a> <a class="btn alt" href="#wholesale">পাইকারি অর্ডার</a></div><div class="heroCard">🛍️<h2>WearUp BD</h2><p>আপনার অনলাইন শপ</p></div></section>
-<section id="categories" class="wrap sec"><small>SHOP BY CATEGORY</small><h2>ক্যাটাগরি</h2><div class="cats"><button onclick="setCat('সব')">🛍️<b>সব পণ্য</b></button><button onclick="setCat('ফ্যাশন')">👕<b>ফ্যাশন</b></button><button onclick="setCat('দৈনন্দিন')">🏠<b>দৈনন্দিন</b></button><button onclick="setCat('পাইকারি')">📦<b>পাইকারি</b></button></div></section>
-<section id="products" class="sec products"><div class="wrap"><div class="row"><div><small>FEATURED PRODUCTS</small><h2>জনপ্রিয় পণ্য</h2></div><input id="search" oninput="render()" placeholder="🔎 পণ্য খুঁজুন..."></div><div id="grid" class="grid"></div></div></section>
-<section id="wholesale" class="wrap wholesale"><div><small>WHOLESALE</small><h2>বেশি পরিমাণে পণ্য লাগবে?</h2><p>পাইকারি অর্ডারের জন্য সরাসরি যোগাযোগ করুন।</p></div><a class="btn" href="#contact">পাইকারি অর্ডার করুন</a></section>
-<section id="contact" class="sec contact"><div class="wrap contactGrid"><div><small>CONTACT US</small><h2>অর্ডার করতে যোগাযোগ করুন</h2><p>পণ্যের নাম, পরিমাণ ও ফোন নম্বর পাঠান।</p><a id="fb" href="https://www.facebook.com/" target="_blank">📘 Facebook Page</a><br><a id="ph" href="tel:+8801XXXXXXXXX">📞 +880 1XXXXXXXXX</a></div><form onsubmit="order(event)"><input id="name" required placeholder="আপনার নাম"><input id="phone" required placeholder="ফোন নম্বর"><input id="item" required placeholder="পণ্যের নাম"><input id="qty" placeholder="পরিমাণ"><textarea id="note" placeholder="অতিরিক্ত তথ্য"></textarea><button class="btn">WhatsApp-এ অর্ডার পাঠান</button></form></div></section>
-<footer><div class="wrap">© <span id="year"></span> WearUp BD • Retail & Wholesale</div></footer>
-<aside id="drawer"><button onclick="cartClose()">✕</button><h2>🛒 Cart</h2><div id="items"></div><b>মোট: <span id="total">৳0</span></b><button class="btn" onclick="checkout()">Checkout</button></aside><div id="shade" onclick="cartClose()"></div>
-<script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WearUp BD | Premium Fashion</title>
+    <meta name="description" content="WearUp BD - Premium fashion collection at the best price.">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="top-bar">
+    <div class="container top-bar-content">
+        <span>
+            <i class="fa-solid fa-truck"></i>
+            Free Delivery on selected orders
+        </span>
+
+        <span>
+            <i class="fa-solid fa-money-bill-wave"></i>
+            Cash on Delivery Available
+        </span>
+    </div>
+</div>
+
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <div class="container nav-content">
+
+        <a href="#" class="logo">
+            Wear<span>Up</span> BD
+        </a>
+
+        <nav class="nav-menu">
+            <a href="#home" class="active">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="icon-btn" aria-label="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="icon-btn cart-btn" aria-label="Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">0</span>
+            </button>
+
+            <button class="menu-btn" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </div>
+</header>
+
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <span class="hero-small">
+                NEW COLLECTION 2026
+            </span>
+
+            <h1>
+                Upgrade<br>
+                Your <span>Style</span>
+            </h1>
+
+            <p>
+                Discover premium fashion collections
+                designed for your everyday style.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#shop" class="btn btn-primary">
+                    Shop Now
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#categories" class="btn btn-outline">
+                    Explore Collection
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+<section class="categories section" id="categories">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>EXPLORE</span>
+            <h2>Shop by Category</h2>
+            <p>Find your favorite style from our collections.</p>
+        </div>
+
+        <div class="category-grid">
+
+            <a href="#shop" class="category-card">
+                <div class="category-icon">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <h3>T-Shirts</h3>
+                <p>20+ Products</p>
+            </a>
+
+            <a href="#shop" class="category-card">
+                <div class="category-icon">
+                    <i class="fa-solid fa-person"></i>
+                </div>
+                <h3>Pants</h3>
+                <p>15+ Products</p>
+            </a>
+
+            <a href="#shop" class="category-card">
+                <div class="category-icon">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                </div>
+                <h3>Shoes</h3>
+                <p>25+ Products</p>
+            </a>
+
+            <a href="#shop" class="category-card">
+                <div class="category-icon">
+                    <i class="fa-solid fa-hat-cowboy"></i>
+                </div>
+                <h3>Accessories</h3>
+                <p>30+ Products</p>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+<section class="products section" id="shop">
+
+    <div class="container">
+
+        <div class="section-heading product-heading">
+
+            <div>
+                <span>OUR COLLECTION</span>
+                <h2>Featured Products</h2>
+                <p>Trending products selected for you.</p>
+            </div>
+
+            <a href="#" class="view-all">
+                View All
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="product-grid">
+
+            <!-- PRODUCT 1 -->
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        New
+                    </span>
+
+                    <button class="wishlist" aria-label="Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+                        alt="Premium T-Shirt">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        T-Shirt
+                    </span>
+
+                    <h3>Premium Cotton T-Shirt</h3>
+
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(24)</span>
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <span>৳999</span>
+                            <del>৳1,299</del>
+                        </div>
+
+                        <button class="add-cart">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 2 -->
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <span class="product-badge sale">
+                        Sale
+                    </span>
+
+                    <button class="wishlist" aria-label="Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
+                        alt="Denim Jeans">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Pants
+                    </span>
+
+                    <h3>Classic Denim Jeans</h3>
+
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span>(18)</span>
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <span>৳1,499</span>
+                            <del>৳1,899</del>
+                        </div>
+
+                        <button class="add-cart">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 3 -->
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <button class="wishlist" aria-label="Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+                        alt="Running Shoes">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Shoes
+                    </span>
+
+                    <h3>Urban Running Shoes</h3>
+
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(31)</span>
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <span>৳2,499</span>
+                            <del>৳2,999</del>
+                        </div>
+
+                        <button class="add-cart">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRODUCT 4 -->
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    <span class="product-badge">
+                        Popular
+                    </span>
+
+                    <button class="wishlist" aria-label="Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=800&q=80"
+                        alt="Fashion Cap">
+
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Accessories
+                    </span>
+
+                    <h3>Premium Fashion Cap</h3>
+
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span>(16)</span>
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+                            <span>৳699</span>
+                            <del>৳899</del>
+                        </div>
+
+                        <button class="add-cart">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= OFFER ================= -->
+<section class="offer-section">
+
+    <div class="container">
+
+        <div class="offer-box">
+
+            <div class="offer-content">
+
+                <span>LIMITED TIME OFFER</span>
+
+                <h2>
+                    Get Up To <strong>30% OFF</strong>
+                </h2>
+
+                <p>
+                    Grab your favorite fashion items before
+                    the offer ends.
+                </p>
+
+                <a href="#shop" class="btn btn-light">
+                    Shop Offers
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+            <div class="offer-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY US ================= -->
+<section class="features section" id="about">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span>WHY WEARUP BD</span>
+            <h2>Why Choose Us?</h2>
+            <p>We make your shopping experience simple and reliable.</p>
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3>Fast Delivery</h3>
+                <p>Fast and reliable delivery across Bangladesh.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Secure Order</h3>
+                <p>Your order information is handled securely.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <h3>Easy Payment</h3>
+                <p>Convenient payment options for your orders.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </div>
+                <h3>Easy Return</h3>
+                <p>Simple return support for eligible products.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+<section class="newsletter">
+
+    <div class="container newsletter-box">
+
+        <div>
+            <span>STAY UPDATED</span>
+            <h2>Get the latest offers</h2>
+            <p>Subscribe for new products and exclusive deals.</p>
+        </div>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Enter your email"
+                required>
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="#" class="footer-logo">
+                Wear<span>Up</span> BD
+            </a>
+
+            <p>
+                Premium fashion for your everyday lifestyle.
+                Discover quality products at affordable prices.
+            </p>
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+                <a href="#" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About Us</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Categories</h3>
+
+            <a href="#shop">T-Shirts</a>
+            <a href="#shop">Pants</a>
+            <a href="#shop">Shoes</a>
+            <a href="#shop">Accessories</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Bangladesh
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +880 1XXXXXXXXX
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                support@wearupbd.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 WearUp BD. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JS ================= -->
+<script>
+
+    // Mobile menu
+    const menuBtn = document.querySelector(".menu-btn");
+    const navMenu = document.querySelector(".nav-menu");
+
+    menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+    });
+
+
+    // Cart counter
+    const cartButtons = document.querySelectorAll(".add-cart");
+    const cartCount = document.querySelector(".cart-count");
+
+    let cartItems = 0;
+
+    cartButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            cartItems++;
+            cartCount.textContent = cartItems;
+
+            button.innerHTML = '<i class="fa-solid fa-check"></i>';
+
+            setTimeout(() => {
+                button.innerHTML = '<i class="fa-solid fa-cart-plus"></i>';
+            }, 1000);
+
+        });
+
+    });
+
+
+    // Wishlist
+    const wishlistButtons = document.querySelectorAll(".wishlist");
+
+    wishlistButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const icon = button.querySelector("i");
+
+            icon.classList.toggle("fa-regular");
+            icon.classList.toggle("fa-solid");
+
+        });
+
+    });
+
+
+    // Newsletter
+    const newsletterForm =
+        document.querySelector(".newsletter-form");
+
+    newsletterForm.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        const email =
+            newsletterForm.querySelector("input").value;
+
+        alert("Thank you for subscribing!");
+
+        newsletterForm.reset();
+
+    });
+
+</script>
+
+</body>
+</html>

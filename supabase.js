@@ -1,11 +1,4 @@
-// Supabase public browser configuration.
-// IMPORTANT: use the project's ANON/PUBLISHABLE key only.
-// NEVER put the Supabase service_role/secret key in this file.
-
-const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_OR_PUBLISHABLE_KEY";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
+SUPABASE_URL=https://bozuqgvzlonzbwqiujzo.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_X_yRnrd_3dVTI0k9LFDWtQ_c_SiACjs
+SUPABASE_SECRET_KEY=sb_secret_H273f-kzSOBdKR_81QzPVA_w5F7rrFW
+SUPABASE_JWKS_URL=https://bozuqgvzlonzbwqiujzo.supabase.co/auth/v1/.well-known/jwks.json

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WearUp BD — Admin Panel</title><link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="loginView" class="auth">
+  <form id="loginForm" class="panel">
+    <h1>🔐 Admin Login</h1><p>WearUp BD Product Manager</p>
+    <input id="email" type="email" required placeholder="Admin email">
+    <input id="password" type="password" required placeholder="Password">
+    <button class="btn">Login</button><p id="loginMsg" class="msg"></p>
+  </form>
+</div>
+
+<div id="appView" class="hidden">
+<header class="bar"><b>WearUp BD Admin</b><button id="logoutBtn">Logout</button></header>
+<main class="wrap">
+  <div class="stats"><div><small>Products</small><b id="totalProducts">0</b></div><div><small>Total Stock</small><b id="totalStock">0</b></div></div>
+
+  <section class="panel">
+    <div class="sectionHead"><h2 id="formTitle">➕ Add Product</h2><button id="cancelEdit" class="ghost hidden">Cancel Edit</button></div>
+    <form id="productForm">
+      <input type="hidden" id="productId">
+      <label>Product Name<input id="name" required></label>
+      <div class="two"><label>Price (৳)<input id="price" type="number" min="0" step="0.01" required></label>
+      <label>Stock<input id="stock" type="number" min="0" step="1" required></label></div>
+      <label>Category<select id="category" required>
+        <option value="ফ্যাশন">ফ্যাশন</option><option value="দৈনন্দিন">দৈনন্দিন</option>
+        <option value="পাইকারি">পাইকারি</option><option value="অন্যান্য">অন্যান্য</option>
+      </select></label>
+      <label>Description<textarea id="description" rows="4"></textarea></label>
+      <label>Product Image<input id="image" type="file" accept="image/*"></label>
+      <div id="preview"></div>
+      <button class="btn" id="saveBtn">Save Product</button><p id="formMsg" class="msg"></p>
+    </form>
+  </section>
+
+  <section class="panel"><div class="sectionHead"><h2>📦 Products</h2><button id="refreshBtn" class="ghost">Refresh</button></div>
+    <div class="tableWrap"><table><thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+    <tbody id="productRows"></tbody></table></div>
+  </section>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script><script src="admin.js"></script>
+</body></html>
